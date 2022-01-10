@@ -24,6 +24,11 @@ class Block {
         return new Block('Genesis time', '------', 'f1r57xh45h', []);
     }
 
+    static blockHash(block) {
+        const { timestamp, lastHash, data } = block;
+        return Block.hash(timestamp, lastHash, data);
+    }
+
     static mineBlock(lastBlock, data) {
         const timestamp = Date.now();
         const lastHash = lastBlock.hash;
